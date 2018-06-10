@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+      <div class="card-header">
+        <h4 class="m-b-0 text-white">Listado de Roles</h4>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Exportar Datos</h4>
+        <h6 class="card-subtitle">Exportar datos a Clipboard , CSV, Excel, PDF e Imprimir</h6>
+        <p id="notice">
+          <%= notice %>
+        </p>
+        <p>
+          <b>Name:</b>
+          <%= @role.name %>
+        </p>
+        Permissions
+        <table>
+          <tr>
+            <th>Class</th>
+            <th>Action</th>
+          </tr>
+          <% @permissions.each do |permission| %>
+            <tr>
+              <td>
+                <%= permission.subject_class %>
+              </td>
+              <td>
+                <%= permission.action %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <%= link_to 'Back', roles_path %>
+      </div>
+    </div>
+  </div>
+</div>

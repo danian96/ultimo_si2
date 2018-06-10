@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProyectoFinalSi2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="fix-header card-no-border">
+    <!-- Navigation -->
+    <%= render 'layouts/preloader' %>
+      <!-- ============================================================== -->
+      <!-- Main wrapper - style you can find in pages.scss -->
+      <!-- ============================================================== -->
+      <div id="main-wrapper">
+        <%= render 'layouts/topbar' %>
+        <%= render 'layouts/left-sidebar' %>
+            <div class="page-wrapper">
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Dashboard</h3>
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <%= yield %>
+                    <%= render 'layouts/right-sidebar' %>
+                </div>
+                <%= render 'layouts/footer' %>
+            </div>
+        </div>
+
+  </body>
+</html>
