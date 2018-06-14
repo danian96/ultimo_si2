@@ -1,14 +1,27 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Asig date:</strong>
-  <%= @asig_stock.asig_date %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @asig_stock.user %>
-</p>
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Asignacion Stock</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Fecha de Asignacion:</strong>
+        <%= @asig_stock.asig_date %>
+      </p>
 
-<%= link_to 'Edit', edit_asig_stock_path(@asig_stock) %> |
-<%= link_to 'Back', asig_stocks_path %>
+      <p>
+        <strong>Usuario  :</strong>
+        <%= @asig_stock.user.email %>
+      </p>
+
+      <p>
+        <%= link_to 'Editar', edit_asig_stock_path(@asig_stock), class:"btn btn-info"  %>
+        <%= link_to 'Atras', asig_stocks_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

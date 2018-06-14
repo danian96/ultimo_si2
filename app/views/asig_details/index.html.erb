@@ -1,31 +1,103 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+      <div class="card-header">
+        <h4 class="m-b-0 text-white">Listado de Asignacion Stock</h4>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Exportar Datos</h4>
+        <h6 class="card-subtitle">Exportar datos a Clipboard , CSV, Excel, PDF e Imprimir</h6>
+        <div class="table-responsive m-t-40">
+          <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+              <th>Fecha de Asignacion</th>
+              <th>Usuario</th>
+              <th>Asignacion de Stock</th>
+              <th>Acciones</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+              <th>Fecha de Asignacion</th>
+              <th>Usuario</th>
+              <th>Asignacion de Stock</th>
+              <th>Acciones</th>
+            </tr>
+            </tfoot>
+            <tbody>
+              <% @asig_details.each do |asig_detail| %>
+                <tr>
+                  <td><%= asig_detail.quantity %></td>
+                  <td><%= asig_detail.stock.item_name %></td>
+                  <td><%= asig_detail.asig_stock.asig_date %></td>
+                  <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, asig_detail %>
+                  <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_asig_detail_path(asig_detail) %>
+                  <%= link_to '<i class="fa fa-trash-o text-danger"></i>'.html_safe, asig_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <%= link_to 'Nuevo Detalle Asignacion', new_asig_detail_path, class: "btn btn-block btn-info"  %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h1>Asig Details</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Quantity</th>
-      <th>Stock</th>
-      <th>Asig stock</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @asig_details.each do |asig_detail| %>
-      <tr>
-        <td><%= asig_detail.quantity %></td>
-        <td><%= asig_detail.stock %></td>
-        <td><%= asig_detail.asig_stock %></td>
-        <td><%= link_to 'Show', asig_detail %></td>
-        <td><%= link_to 'Edit', edit_asig_detail_path(asig_detail) %></td>
-        <td><%= link_to 'Destroy', asig_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Asig Detail', new_asig_detail_path %>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function(group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    $('#example23').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+</script>

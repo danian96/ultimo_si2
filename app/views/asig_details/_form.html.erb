@@ -1,4 +1,5 @@
-<%= form_with(model: asig_detail, local: true) do |form| %>
+
+  <%= form_with(model: asig_detail, local: true, html: {class: "form-horizontal"}) do |form| %>
   <% if asig_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(asig_detail.errors.count, "error") %> prohibited this asig_detail from being saved:</h2>
@@ -10,23 +11,41 @@
       </ul>
     </div>
   <% end %>
+    <div class="col-md-6">
+      <div class="form-group row">
+        <%= form.label :cantidad , class:"control-label text-right col-md-3" %>
+        <div class="col-md-9">
+          <%= form.number_field :quantity,class:"form-control",placeholder:"00" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group row">
+        <%= form.label :Stock , class:"control-label text-right col-md-3" %>
+        <div class="col-md-9">
+          <%= form.collection_select(:stock_id, Stock.all, :id, :item_name, {hide_label: true},class: "form-control custom-select") %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
-
-  <div class="field">
-    <%= form.label :stock_id %>
-    <%= form.text_field :stock_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :asig_stock_id %>
-    <%= form.text_field :asig_stock_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="col-md-6">
+      <div class="form-group row">
+        <%= form.label :Asignacion_Stock , class:"control-label text-right col-md-3" %>
+        <div class="col-md-9">
+          <%= form.collection_select(:asig_stock_id, AsigStock.all, :id, :asig_date, {hide_label: true},class: "form-control custom-select") %>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+              <%= form.submit "Guardar", class:"btn btn-info" %>
+              <%= link_to 'Atras',asig_details_path , class:"btn btn-info"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>

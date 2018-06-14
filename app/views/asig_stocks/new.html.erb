@@ -1,5 +1,14 @@
-<h1>New Asig Stock</h1>
 
-<%= render 'form', asig_stock: @asig_stock %>
 
-<%= link_to 'Back', asig_stocks_path %>
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Asignacion de Stock </h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <%= render 'form', asig_stock: @asig_stock %>
+    </div>
+  </div>
+</div>
