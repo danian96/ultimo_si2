@@ -1,0 +1,25 @@
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Other Sample Horizontal form</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Person Info</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Name:</strong>
+        <%= @skill.name %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @skill.description %>
+      </p>
+      <p>
+      <%= link_to 'Editar', edit_skill_path(@skill), class:"btn btn-info"  %>
+      <%= link_to 'Atras', skills_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

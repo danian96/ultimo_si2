@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-header">
-                <h4 class="m-b-0 text-white">Listado de Permisos del rol: <%= @role.name %></h4>
+                <h4 class="m-b-0 text-white">Listado de Permisos del Rol <%= @role.name %></h4>
             </div>
             <div class="card-body">
               <h4 class="card-title">Exportar Datos</h4>
@@ -47,8 +47,9 @@
         </table>
       </div>
       </fieldset>
-      <%= link_to 'Back', roles_path %>
+
     </div>
+    <%= link_to 'Volver al Listado de Roles', roles_path, class: "btn btn-block btn-info"  %>
   </div>
   </div>
 </div>

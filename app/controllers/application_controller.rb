@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
  rescue_from CanCan::AccessDenied do |exception|
    flash[:alert] = "Access denied. You are not authorized to access the requested page."
-   redirect_to root_path and return
+   redirect_to people_path
  end
 
  protected

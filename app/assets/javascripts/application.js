@@ -13,6 +13,7 @@
 //= require jquery.min.js
 //= require popper.min.js
 //= require bootstrap.min.js
+//= require jquery_ujs
 //= require jquery.slimscroll.js
 //= require waves.js
 //= require sidebarmenu.js

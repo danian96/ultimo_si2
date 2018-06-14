@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: MyString
+  date_of_assistance: 2018-06-13
+  init_time: 2018-06-13 23:15:10
+  final_time: 2018-06-13 23:15:10
+  people: one
+
+two:
+  day: MyString
+  date_of_assistance: 2018-06-13
+  init_time: 2018-06-13 23:15:10
+  final_time: 2018-06-13 23:15:10
+  people: two

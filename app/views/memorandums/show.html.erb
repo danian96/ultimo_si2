@@ -1,0 +1,36 @@
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">memorandum</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Titulo:</strong>
+        <%= @memorandum.title %>
+      </p>
+
+      <p>
+        <strong>Descripcion:</strong>
+        <%= @memorandum.description %>
+      </p>
+
+      <p>
+        <strong>Tipo memorandums:</strong>
+        <%= @memorandum.memorandum_type_id %>
+      </p>
+
+      <p>
+        <strong>User:</strong>
+        <%= @memorandum.user_id %>
+      </p>
+
+      <p>
+        <%= link_to 'Editar', edit_memorandum_path(@memorandum), class:"btn btn-info"  %>
+        <%= link_to 'Atras', memorandums_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

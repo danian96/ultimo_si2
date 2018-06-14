@@ -1,0 +1,40 @@
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Asistencia</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Dia:</strong>
+        <%= @assistance.day %>
+      </p>
+
+      <p>
+        <strong>Fecha:</strong>
+        <%= @assistance.date_of_assistance %>
+      </p>
+
+      <p>
+        <strong>Hora_inicio:</strong>
+        <%= @assistance.init_time %>
+      </p>
+
+      <p>
+        <strong>Hora_final:</strong>
+        <%= @assistance.finish_time %>
+      </p>
+
+      <p>
+        <strong>Persona:</strong>
+        <%= @assistance.people_id %>
+      </p>
+      <p>
+        <%= link_to 'Editar', edit_assistance_path(@assistance), class:"btn btn-info"  %>
+        <%= link_to 'Atras', assistances_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

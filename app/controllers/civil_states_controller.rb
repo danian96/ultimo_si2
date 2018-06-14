@@ -1,8 +1,8 @@
 class CivilStatesController < ApplicationController
   before_action :set_civil_state, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  load_and_authorize_resource
-  before_action :load_permissions
+  # before_action :authenticate_user!
+  # load_and_authorize_resource
+  # before_action :load_permissions
 
   # GET /civil_states
   # GET /civil_states.json

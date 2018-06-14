@@ -10,9 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_202749) do
+ActiveRecord::Schema.define(version: 2018_06_14_115415) do
+
+  create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "day"
+    t.date "date_of_assistance"
+    t.time "init_time"
+    t.time "final_time"
+    t.bigint "people_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["people_id"], name: "index_assistances_on_people_id"
+  end
 
   create_table "civil_states", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contract_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "memorandum_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "memorandums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "memorandum_type_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["memorandum_type_id"], name: "index_memorandums_on_memorandum_type_id"
+    t.index ["user_id"], name: "index_memorandums_on_user_id"
+  end
+
+  create_table "pay_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,7 +69,9 @@ ActiveRecord::Schema.define(version: 2018_06_10_202749) do
     t.bigint "civil_state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["civil_state_id"], name: "index_people_on_civil_state_id"
+    t.index ["user_id"], name: "index_people_on_user_id"
   end
 
   create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -48,6 +90,13 @@ ActiveRecord::Schema.define(version: 2018_06_10_202749) do
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,5 +120,9 @@ ActiveRecord::Schema.define(version: 2018_06_10_202749) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "assistances", "people", column: "people_id"
+  add_foreign_key "memorandums", "memorandum_types"
+  add_foreign_key "memorandums", "users"
   add_foreign_key "people", "civil_states"
+  add_foreign_key "people", "users"
 end

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :pay_types
+  resources :contract_types
+  resources :assistances
+  resources :memorandums
+  resources :memorandum_types
+  resources :skills
   get 'home/home'
   get 'home/index'
   resources :people

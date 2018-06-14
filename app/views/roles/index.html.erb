@@ -28,8 +28,8 @@
                               <%= role.name %>
                             </td>
                             <td>
-                              <%= link_to 'Mostrar Rol', role %>
-                              <%= link_to 'Edit Permisos del Rol', edit_role_path(role) %>
+                              <%= link_to '<i class="fa fa-eye"></i>'.html_safe, role %>
+                              <%= link_to  '<i class="fa fa-edit"></i>'.html_safe, edit_role_path(role) %>
                             </td>
                           </tr>
                         <% end %>

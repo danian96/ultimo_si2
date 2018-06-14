@@ -1,57 +1,101 @@
-<%= form_with(model: person, local: true) do |form| %>
+
+<%= form_with(model: person, local: true, html: {class: "form-horizontal"}) do |form| %>
   <% if person.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
-
       <ul>
-      <% person.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% person.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :name , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :name ,class:"form-control",placeholder:"Nombre" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :last_name , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :last_name ,class:"form-control",placeholder:"Apellidos" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :birthday %>
-    <%= form.date_select :birthday %>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :birthday , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.date_select :birthday ,class:"form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :sex %>
-    <%= form.text_field :sex %>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :sex , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :sex ,class:"form-control",placeholder:"Sexo" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :ci %>
-    <%= form.number_field :ci %>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :ci , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.number_field :ci ,class:"form-control",placeholder:"Carnet de Identidad" %>
+        <%= form.hidden_field :user_id ,class:"form-control",value: current_user.id %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_area :address %>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :address , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_area :address ,class:"form-control",placeholder:"Direccion" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.number_field :phone %>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :phone , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.number_field :phone ,class:"form-control",placeholder:"Numero de Telefono" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :civil_state_id %>
-    <%= form.text_field :civil_state_id %>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :civil_state_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.number_field :civil_state_id ,class:"form-control",placeholder:"Numero de Telefono" %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+  <div class="form-actions">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                  <%= form.submit "Guardar", class:"btn btn-info" %>
+                  <%= link_to 'Atras',people_path , class:"btn btn-info"%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 <% end %>
