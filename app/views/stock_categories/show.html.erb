@@ -1,0 +1,21 @@
+
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Stock Categoria</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Nombre  :</strong>
+        <%= @stock_category.name %>
+      </p>
+      <p>
+        <%= link_to 'Editar', edit_stock_category_path(@stock_category), class:"btn btn-info"  %>
+        <%= link_to 'Atras', stock_categories_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

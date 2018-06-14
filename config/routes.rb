@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :asig_details
+  resources :asig_stocks
+  resources :stocks
+  resources :stock_categories
   resources :traning_users
   resources :tranings
   resources :pay_types

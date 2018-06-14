@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Asig date:</strong>
+  <%= @asig_stock.asig_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @asig_stock.user %>
+</p>
+
+<%= link_to 'Edit', edit_asig_stock_path(@asig_stock) %> |
+<%= link_to 'Back', asig_stocks_path %>

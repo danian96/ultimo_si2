@@ -1,0 +1,32 @@
+<%= form_with(model: asig_detail, local: true) do |form| %>
+  <% if asig_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(asig_detail.errors.count, "error") %> prohibited this asig_detail from being saved:</h2>
+
+      <ul>
+      <% asig_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stock_id %>
+    <%= form.text_field :stock_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :asig_stock_id %>
+    <%= form.text_field :asig_stock_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

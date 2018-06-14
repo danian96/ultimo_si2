@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_151819) do
+ActiveRecord::Schema.define(version: 2018_06_14_193654) do
+
+  create_table "asig_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "stock_id"
+    t.bigint "asig_stock_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asig_stock_id"], name: "index_asig_details_on_asig_stock_id"
+    t.index ["stock_id"], name: "index_asig_details_on_stock_id"
+  end
+
+  create_table "asig_stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "asig_date"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_asig_stocks_on_user_id"
+  end
 
   create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "day"
@@ -101,6 +119,22 @@ ActiveRecord::Schema.define(version: 2018_06_14_151819) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stock_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "item_name"
+    t.integer "quantity"
+    t.date "buying_date"
+    t.bigint "stock_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_category_id"], name: "index_stocks_on_stock_category_id"
+  end
+
   create_table "traning_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "status"
     t.bigint "traning_id"
@@ -139,11 +173,15 @@ ActiveRecord::Schema.define(version: 2018_06_14_151819) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "asig_details", "asig_stocks"
+  add_foreign_key "asig_details", "stocks"
+  add_foreign_key "asig_stocks", "users"
   add_foreign_key "assistances", "people", column: "people_id"
   add_foreign_key "memorandums", "memorandum_types"
   add_foreign_key "memorandums", "users"
   add_foreign_key "people", "civil_states"
   add_foreign_key "people", "users"
+  add_foreign_key "stocks", "stock_categories"
   add_foreign_key "traning_users", "tranings"
   add_foreign_key "traning_users", "users"
 end
