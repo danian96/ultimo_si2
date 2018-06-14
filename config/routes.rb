@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tranings
   resources :pay_types
   resources :contract_types
   resources :assistances

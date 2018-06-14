@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tranings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Init date</th>
+      <th>End date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tranings.each do |traning| %>
+      <tr>
+        <td><%= traning.title %></td>
+        <td><%= traning.description %></td>
+        <td><%= traning.init_date %></td>
+        <td><%= traning.end_date %></td>
+        <td><%= link_to 'Show', traning %></td>
+        <td><%= link_to 'Edit', edit_traning_path(traning) %></td>
+        <td><%= link_to 'Destroy', traning, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Traning', new_traning_path %>
