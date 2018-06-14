@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_115415) do
+ActiveRecord::Schema.define(version: 2018_06_14_151819) do
 
   create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "day"
@@ -101,6 +101,25 @@ ActiveRecord::Schema.define(version: 2018_06_14_115415) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "traning_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "traning_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["traning_id"], name: "index_traning_users_on_traning_id"
+    t.index ["user_id"], name: "index_traning_users_on_user_id"
+  end
+
+  create_table "tranings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.date "init_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -125,4 +144,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_115415) do
   add_foreign_key "memorandums", "users"
   add_foreign_key "people", "civil_states"
   add_foreign_key "people", "users"
+  add_foreign_key "traning_users", "tranings"
+  add_foreign_key "traning_users", "users"
 end

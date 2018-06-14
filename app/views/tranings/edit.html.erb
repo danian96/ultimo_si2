@@ -1,6 +1,13 @@
-<h1>Editing Traning</h1>
 
-<%= render 'form', traning: @traning %>
-
-<%= link_to 'Show', @traning %> |
-<%= link_to 'Back', tranings_path %>
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Editar Entrenamiento</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <%= render 'form', traning: @traning %>
+    </div>
+  </div>
+</div>

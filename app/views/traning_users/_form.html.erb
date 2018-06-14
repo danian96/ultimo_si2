@@ -1,0 +1,51 @@
+<%= form_with(model: traning_user, local: true, html: {class: "form-horizontal"}) do |form| %>
+  <% if traning_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(traning_user.errors.count, "error") %> prohibited this traning_user from being saved:</h2>
+
+      <ul>
+      <% traning_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :estado , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :status ,class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :user_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:traning_id, Traning.all, :id, :title, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :usuario , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:user_id, User.all, :id, :email, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-9">
+            <%= form.submit "Guardar", class:"btn btn-info" %>
+            <%= link_to 'Atras',@traning_users_path , class:"btn btn-info"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

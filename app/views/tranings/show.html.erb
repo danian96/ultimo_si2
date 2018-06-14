@@ -1,24 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Entrenamiento</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Título:</strong>
+        <%= @traning.title %>
+      </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @traning.title %>
-</p>
+      <p>
+        <strong>Descripción:</strong>
+        <%= @traning.description %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @traning.description %>
-</p>
+      <p>
+        <strong>Fecha Inicio:</strong>
+        <%= @traning.init_date %>
+      </p>
 
-<p>
-  <strong>Init date:</strong>
-  <%= @traning.init_date %>
-</p>
+      <p>
+        <strong>Fecha Final:</strong>
+        <%= @traning.end_date %>
+      </p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @traning.end_date %>
-</p>
-
-<%= link_to 'Edit', edit_traning_path(@traning) %> |
-<%= link_to 'Back', tranings_path %>
+      <p>
+        <%= link_to 'Editar', edit_traning_path(@traning), class:"btn btn-info"  %>
+        <%= link_to 'Atras', tranings_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>
