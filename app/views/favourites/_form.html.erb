@@ -1,0 +1,56 @@
+<%= form_with(model: favourite, local: true, html: {class: "form-horizontal"}) do |form| %>
+  <% if favourite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(favourite.errors.count, "error") %> prohibited this favourite from being saved:</h2>
+
+      <ul>
+      <% favourite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :nombre , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :name,class:"form-control",placeholder:"Nombre" %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :actionlink  ,"Link  :" , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.select(:actionlink, [['Memorandum', 'memorandums_path'],
+                                       ['Tipo Memorandum', 'memorandum_types_path'],
+                                       ['convocatorias', 'convocatories_path']],
+                        {include_blank: "Selecciona.."}, {:class=>"form-control"})%>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :usuario , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:user_id, User.all, :id, :email, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-9">
+            <%= form.submit "Guardar", class:"btn btn-info" %>
+            <%= link_to 'Atras',asig_details_path , class:"btn btn-info"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
