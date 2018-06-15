@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estado: MyString
+  fecha: 2018-06-14
+  people: one
+  evaluacion_psicologica: one
+  evaluacion_tecnica: one
+
+two:
+  estado: MyString
+  fecha: 2018-06-14
+  people: two
+  evaluacion_psicologica: two
+  evaluacion_tecnica: two

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_115415) do
+ActiveRecord::Schema.define(version: 2018_06_14_220432) do
+
+  create_table "anuncios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "titulo"
+    t.string "estado"
+    t.string "descripcion"
+    t.bigint "departamento_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["departamento_id"], name: "index_anuncios_on_departamento_id"
+  end
 
   create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "day"
@@ -31,6 +41,64 @@ ActiveRecord::Schema.define(version: 2018_06_14_115415) do
 
   create_table "contract_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "convocatories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "titulo"
+    t.string "descripcion"
+    t.date "fecha_ini"
+    t.date "fecha_fin"
+    t.integer "cantidad_vacantes"
+    t.string "estado"
+    t.bigint "detalle_aplicacion_id"
+    t.bigint "designacion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["designacion_id"], name: "index_convocatories_on_designacion_id"
+    t.index ["detalle_aplicacion_id"], name: "index_convocatories_on_detalle_aplicacion_id"
+  end
+
+  create_table "departamentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "designacions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.bigint "departamento_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["departamento_id"], name: "index_designacions_on_departamento_id"
+    t.index ["user_id"], name: "index_designacions_on_user_id"
+  end
+
+  create_table "detalle_aplicacions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "estado"
+    t.date "fecha"
+    t.bigint "people_id"
+    t.bigint "evaluacion_psicologica_id"
+    t.bigint "evaluacion_tecnica_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["evaluacion_psicologica_id"], name: "index_detalle_aplicacions_on_evaluacion_psicologica_id"
+    t.index ["evaluacion_tecnica_id"], name: "index_detalle_aplicacions_on_evaluacion_tecnica_id"
+    t.index ["people_id"], name: "index_detalle_aplicacions_on_people_id"
+  end
+
+  create_table "evaluacion_psicologicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "observaciones"
+    t.string "recomendaciones"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "evaluacion_tecnicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "observacion"
+    t.string "calificacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -120,7 +188,15 @@ ActiveRecord::Schema.define(version: 2018_06_14_115415) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "anuncios", "departamentos"
   add_foreign_key "assistances", "people", column: "people_id"
+  add_foreign_key "convocatories", "designacions"
+  add_foreign_key "convocatories", "detalle_aplicacions"
+  add_foreign_key "designacions", "departamentos"
+  add_foreign_key "designacions", "users"
+  add_foreign_key "detalle_aplicacions", "evaluacion_psicologicas"
+  add_foreign_key "detalle_aplicacions", "evaluacion_tecnicas"
+  add_foreign_key "detalle_aplicacions", "people", column: "people_id"
   add_foreign_key "memorandums", "memorandum_types"
   add_foreign_key "memorandums", "users"
   add_foreign_key "people", "civil_states"

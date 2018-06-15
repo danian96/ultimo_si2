@@ -1,0 +1,21 @@
+
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Departamento</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Nombre:</strong>
+        <%= @departamento.name %>
+      </p>
+
+      <%= link_to 'Edit', edit_departamento_path(@departamento) %> |
+      <%= link_to 'Back', departamentos_path %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :convocatories
+  resources :designacions
+  resources :anuncios
+  resources :departamentos
+  resources :detalle_aplicacions
+  resources :evaluacion_psicologicas
+  resources :evaluacion_tecnicas
   resources :pay_types
   resources :contract_types
   resources :assistances
