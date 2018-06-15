@@ -1,0 +1,31 @@
+
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Favorito</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Name:</strong>
+        <%= @favourite.name %>
+      </p>
+
+      <p>
+        <strong>Actionlink:</strong>
+        <%= @favourite.actionlink %>
+      </p>
+
+      <p>
+        <strong>User:</strong>
+        <%= @favourite.user %>
+      </p>
+      <p>
+        <%= link_to 'Editar', edit_favourite_path(@favourite), class:"btn btn-info"  %>
+        <%= link_to 'Atras', favourites_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>
