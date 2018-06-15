@@ -10,11 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_06_15_162705) do
 
-=======
->>>>>>> a7d48f9dbeeb063d0160ddf4e12fac73c839e72d
   create_table "anuncios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "titulo"
     t.string "estado"
@@ -123,6 +120,16 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "favourites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "actionlink"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
   create_table "grade_academics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "institution"
@@ -285,7 +292,6 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-<<<<<<< HEAD
   add_foreign_key "anuncios", "departamentos", on_update: :cascade, on_delete: :cascade
   add_foreign_key "asig_details", "asig_stocks", on_update: :cascade, on_delete: :cascade
   add_foreign_key "asig_details", "stocks", on_update: :cascade, on_delete: :cascade
@@ -298,6 +304,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
   add_foreign_key "detalle_aplicacions", "evaluacion_psicologicas", on_update: :cascade, on_delete: :cascade
   add_foreign_key "detalle_aplicacions", "evaluacion_tecnicas", on_update: :cascade, on_delete: :cascade
   add_foreign_key "detalle_aplicacions", "people", column: "people_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "favourites", "users"
   add_foreign_key "memorandums", "memorandum_types", on_update: :cascade, on_delete: :cascade
   add_foreign_key "memorandums", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "people", "civil_states", on_update: :cascade, on_delete: :cascade
@@ -312,5 +319,3 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
   add_foreign_key "traning_users", "tranings", on_update: :cascade, on_delete: :cascade
   add_foreign_key "traning_users", "users", on_update: :cascade, on_delete: :cascade
 end
-=======
->>>>>>> a7d48f9dbeeb063d0160ddf4e12fac73c839e72d
