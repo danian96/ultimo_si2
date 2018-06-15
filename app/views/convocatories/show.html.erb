@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<%= link_to 'Edit', edit_convocatory_path(@convocatory) %> |
+<%= link_to 'Back', convocatories_path %>
+
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Convocatoria</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Titulo:</strong>
+        <%= @convocatory.titulo %>
+      </p>
+
+      <p>
+        <strong>Descripcion:</strong>
+        <%= @convocatory.descripcion %>
+      </p>
+
+      <p>
+        <strong>Fecha ini:</strong>
+        <%= @convocatory.fecha_ini %>
+      </p>
+
+      <p>
+        <strong>Fecha fin:</strong>
+        <%= @convocatory.fecha_fin %>
+      </p>
+
+      <p>
+        <strong>Cantidad vacantes:</strong>
+        <%= @convocatory.cantidad_vacantes %>
+      </p>
+
+      <p>
+        <strong>Estado:</strong>
+        <%= @convocatory.estado %>
+      </p>
+
+      <p>
+        <strong>Detalle aplicacion:</strong>
+        <%= @convocatory.detalle_aplicacion %>
+      </p>
+
+      <p>
+        <strong>Designacion:</strong>
+        <%= @convocatory.designacion %>
+      </p>
+
+      <p>
+        <%= link_to 'Editar', edit_convocatory_path(@convocatory), class:"btn btn-info"  %>
+        <%= link_to 'Atras', convocatories_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

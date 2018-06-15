@@ -1,0 +1,35 @@
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">memorandum</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Titulo:</strong>
+        <%= @anuncio.titulo %>
+      </p>
+
+      <p>
+        <strong>Estado:</strong>
+        <%= @anuncio.estado %>
+      </p>
+
+      <p>
+        <strong>Descripcion:</strong>
+        <%= @anuncio.descripcion %>
+      </p>
+
+      <p>
+        <strong>Departamento:</strong>
+        <%= @anuncio.departamento_id %>
+      </p>
+      <p>
+        <%= link_to 'Editar', edit_anuncio_path(@anuncio), class:"btn btn-info"  %>
+        <%= link_to 'Atras', anuncios_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

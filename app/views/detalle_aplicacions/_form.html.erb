@@ -1,0 +1,74 @@
+<%= form_with(model: detalle_aplicacion, local: true, html: {class: "form-horizontal"})  do |form| %>
+  <% if detalle_aplicacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(detalle_aplicacion.errors.count, "error") %> prohibited this detalle_aplicacion from being saved:</h2>
+
+      <ul>
+      <% detalle_aplicacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-6">
+             <div class="form-group row">
+                  <%= form.label :estado , class:"control-label text-right col-md-3" %>
+                  <div class="col-md-9">
+                    <%= form.text_field :estado ,class:"form-control",placeholder:"estado" %>
+                  </div>
+             </div>
+        </div>
+
+  <div class="col-md-6">
+             <div class="form-group row">
+                  <%= form.label :fecha , class:"control-label text-right col-md-3" %>
+                  <div class="col-md-9">
+                    <%= form.date_select :fecha ,class:"form-control" %>
+                  </div>
+             </div>
+        </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :people_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:people_id, Person.all, :id, :name, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :evaluacion_psicologica_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:evaluacion_psicologica_id, EvaluacionPsicologica.all, :id, :observaciones, {hide_label: true},class: "form-control custom-select") %>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :evaluacion_tecnica_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:evaluacion_tecnica_id, EvaluacionTecnica.all, :id,:observacion, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-9">
+            <%= form.submit "Guardar", class:"btn btn-info" %>
+            <%= link_to 'Atras',detalle_aplicacions_path , class:"btn btn-info"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>

@@ -1,0 +1,54 @@
+<%= form_with(model: anuncio, local: true, html: {class: "form-horizontal"}) do |form| %>
+  <% if anuncio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(anuncio.errors.count, "error") %> prohibited this anuncio from being saved:</h2>
+
+      <ul>
+      <% anuncio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-6">
+       <div class="form-group row">
+            <%= form.label :titulo, "Titulo :", class:"control-label text-right col-md-3" %>
+            <div class="col-md-9">
+              <%= form.text_field :titulo ,class:"form-control",placeholder:"Titulo" %>
+            </div>
+       </div>
+  </div>
+
+  <div class="col-md-6">
+       <div class="form-group row">
+            <%= form.label :estado, "Estado :", class:"control-label text-right col-md-3" %>
+            <div class="col-md-9">
+              <%= form.text_field :estado ,class:"form-control",placeholder:"Estado" %>
+            </div>
+       </div>
+  </div>
+
+  <div class="col-md-6">
+       <div class="form-group row">
+            <%= form.label :descripcion, "descripcion :", class:"control-label text-right col-md-3" %>
+            <div class="col-md-9">
+              <%= form.text_field :descripcion ,class:"form-control",placeholder:"descripcion" %>
+            </div>
+       </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :departamento_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:departamento_id, Departamento.all, :id, :name, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

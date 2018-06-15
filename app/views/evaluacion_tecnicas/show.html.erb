@@ -1,0 +1,24 @@
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Evaluacion tecnica</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Evaluacion tecnica Info</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Observacion:</strong>
+        <%= @evaluacion_tecnica.observacion %>
+      </p>
+      <p>
+        <strong>Calificacion:</strong>
+        <%= @evaluacion_tecnica.calificacion %>
+      </p>
+      <p>
+      <%= link_to 'Editar', edit_evaluacion_tecnica_path(@evaluacion_tecnica), class:"btn btn-info"  %>
+      <%= link_to 'Atras', evaluacion_tecnicas_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>
