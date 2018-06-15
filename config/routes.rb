@@ -38,3 +38,9 @@ end
   resources :detalle_aplicacions
   resources :evaluacion_psicologicas
   resources :evaluacion_tecnicas
+  resources :asig_details
+  resources :asig_stocks
+  resources :stocks
+  resources :stock_categories
+  resources :traning_users
+  resources :tranings

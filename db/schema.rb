@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_06_14_204834) do
 
   create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -128,6 +129,41 @@ ActiveRecord::Schema.define(version: 2018_06_14_204834) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stock_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "item_name"
+    t.integer "quantity"
+    t.date "buying_date"
+    t.bigint "stock_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_category_id"], name: "index_stocks_on_stock_category_id"
+  end
+
+  create_table "traning_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "traning_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["traning_id"], name: "index_traning_users_on_traning_id"
+    t.index ["user_id"], name: "index_traning_users_on_user_id"
+  end
+
+  create_table "tranings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.date "init_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -146,7 +182,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_204834) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
-
   add_foreign_key "anuncios", "departamentos"
   add_foreign_key "assistances", "people", column: "people_id"
   add_foreign_key "convocatories", "designacions"
@@ -160,6 +195,9 @@ ActiveRecord::Schema.define(version: 2018_06_14_204834) do
   add_foreign_key "memorandums", "users"
   add_foreign_key "people", "civil_states"
   add_foreign_key "people", "users"
+  add_foreign_key "stocks", "stock_categories"
+  add_foreign_key "traning_users", "tranings"
+  add_foreign_key "traning_users", "users"
   add_foreign_key "person_professions", "grade_academics"
   add_foreign_key "person_professions", "people"
   add_foreign_key "person_professions", "professions"
