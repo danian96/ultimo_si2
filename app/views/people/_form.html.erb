@@ -53,7 +53,15 @@
       <%= form.label :ci , class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.number_field :ci ,class:"form-control",placeholder:"Carnet de Identidad" %>
-        <%= form.hidden_field :user_id ,class:"form-control",value: current_user.id %>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :user_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:user_id, User.all, :id, :email, {hide_label: true},class: "form-control custom-select") %>
       </div>
     </div>
   </div>
@@ -80,10 +88,11 @@
     <div class="form-group row">
       <%= form.label :civil_state_id , class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
-        <%= form.number_field :civil_state_id ,class:"form-control",placeholder:"Numero de Telefono" %>
+        <%= form.collection_select(:civil_state_id, CivilState.all, :id, :name, {hide_label: true},class: "form-control custom-select") %>
       </div>
     </div>
   </div>
+
 
 
   <div class="form-actions">

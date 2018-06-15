@@ -1,0 +1,46 @@
+<%= form_with(model: grade_academic, local: true, html: {class: "form-horizontal"}) do |form| %>
+  <% if grade_academic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(grade_academic.errors.count, "error") %> prohibited this grade_academic from being saved:</h2>
+
+      <ul>
+      <% grade_academic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :Nombre , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :name ,class:"form-control",placeholder:"Nombre" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :Institución , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :institution ,class:"form-control",placeholder:"Institución" %>
+      </div>
+    </div>
+  </div>
+
+
+<div class="form-actions">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <%= form.submit "Guardar", class:"btn btn-info" %>
+          <%= link_to 'Atras',grade_academics_path , class:"btn btn-info"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

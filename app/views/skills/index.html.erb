@@ -3,7 +3,7 @@
   <div class="col-lg-12">
     <div class="card card-outline-info">
       <div class="card-header">
-        <h4 class="m-b-0 text-white">Listado de Tipos de pagos</h4>
+        <h4 class="m-b-0 text-white">Listado de Hablidades</h4>
       </div>
       <div class="card-body">
         <h4 class="card-title">Exportar Datos</h4>
@@ -29,9 +29,10 @@
                 <tr>
                   <td><%= skill.name %></td>
                   <td><%= skill.description %></td>
-                  <td><%= link_to 'Show', skill %></td>
-                  <td><%= link_to 'Edit', edit_skill_path(skill) %></td>
-                  <td><%= link_to 'Destroy', skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, skill %>
+                  <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_skill_path(skill) %>
+                  <%= link_to '<i class="fa fa-trash-o text-danger"></i>'.html_safe, skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  
                 </tr>
               <% end %>
             </tbody>

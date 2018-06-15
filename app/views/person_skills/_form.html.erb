@@ -1,0 +1,56 @@
+<%= form_with(model: person_skill, local: true, html: {class: "form-horizontal"}) do |form| %>
+  <% if person_skill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person_skill.errors.count, "error") %> prohibited this person_skill from being saved:</h2>
+
+      <ul>
+      <% person_skill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :person_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:person_id, Person.all, :id, :name, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :Habilidad, class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:skill_id, Skill.all, :id, :name, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :nivel , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.number_field :nivel ,class:"form-control",placeholder:"Nivel" %>
+      </div>
+    </div>
+  </div>
+
+<div class="form-actions">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <%= form.submit "Guardar", class:"btn btn-info" %>
+          <%= link_to 'Atras',person_skills_path , class:"btn btn-info"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

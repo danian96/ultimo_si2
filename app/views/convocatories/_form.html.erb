@@ -1,0 +1,99 @@
+<%= form_with(model: convocatory, local: true, html: {class: "form-horizontal"}) do |form| %>
+  <% if convocatory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(convocatory.errors.count, "error") %> prohibited this convocatory from being saved:</h2>
+
+      <ul>
+      <% convocatory.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :titulo , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :titulo ,class:"form-control",placeholder:"Titulo" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :descripcion , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :descripcion ,class:"form-control",placeholder:"Descripcion" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :fecha_ini , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.date_select :fecha_ini ,class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :fecha_fin , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.date_select :fecha_fin ,class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :cantidad_vacantes , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :cantidad_vacantes ,class:"form-control",placeholder:"Vacantes" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :estado , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.text_field :estado ,class:"form-control",placeholder:"Estado" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :detalle_aplicacion_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:detalle_aplicacion_id, DetalleAplicacion.all, :id, :estado, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-group row">
+      <%= form.label :designacion_id , class:"control-label text-right col-md-3" %>
+      <div class="col-md-9">
+        <%= form.collection_select(:designacion_id, Designacion.all, :id, :name, {hide_label: true},class: "form-control custom-select") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-9">
+            <%= form.submit "Guardar", class:"btn btn-info" %>
+            <%= link_to 'Atras',convocatories_path , class:"btn btn-info"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -10,25 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_193654) do
 
-  create_table "asig_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "stock_id"
-    t.bigint "asig_stock_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["asig_stock_id"], name: "index_asig_details_on_asig_stock_id"
-    t.index ["stock_id"], name: "index_asig_details_on_stock_id"
-  end
-
-  create_table "asig_stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "asig_date"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_asig_stocks_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2018_06_14_204834) do
 
   create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "day"
@@ -106,6 +89,33 @@ ActiveRecord::Schema.define(version: 2018_06_14_193654) do
     t.integer "role_id"
   end
 
+  create_table "person_professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "person_id"
+    t.bigint "profession_id"
+    t.bigint "grade_academic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grade_academic_id"], name: "index_person_professions_on_grade_academic_id"
+    t.index ["person_id"], name: "index_person_professions_on_person_id"
+    t.index ["profession_id"], name: "index_person_professions_on_profession_id"
+  end
+
+  create_table "person_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "nivel"
+    t.bigint "person_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_person_skills_on_person_id"
+    t.index ["skill_id"], name: "index_person_skills_on_skill_id"
+  end
+
+  create_table "professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -172,11 +182,15 @@ ActiveRecord::Schema.define(version: 2018_06_14_193654) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
-
-  add_foreign_key "asig_details", "asig_stocks"
-  add_foreign_key "asig_details", "stocks"
-  add_foreign_key "asig_stocks", "users"
+  add_foreign_key "anuncios", "departamentos"
   add_foreign_key "assistances", "people", column: "people_id"
+  add_foreign_key "convocatories", "designacions"
+  add_foreign_key "convocatories", "detalle_aplicacions"
+  add_foreign_key "designacions", "departamentos"
+  add_foreign_key "designacions", "users"
+  add_foreign_key "detalle_aplicacions", "evaluacion_psicologicas"
+  add_foreign_key "detalle_aplicacions", "evaluacion_tecnicas"
+  add_foreign_key "detalle_aplicacions", "people", column: "people_id"
   add_foreign_key "memorandums", "memorandum_types"
   add_foreign_key "memorandums", "users"
   add_foreign_key "people", "civil_states"
@@ -184,4 +198,9 @@ ActiveRecord::Schema.define(version: 2018_06_14_193654) do
   add_foreign_key "stocks", "stock_categories"
   add_foreign_key "traning_users", "tranings"
   add_foreign_key "traning_users", "users"
+  add_foreign_key "person_professions", "grade_academics"
+  add_foreign_key "person_professions", "people"
+  add_foreign_key "person_professions", "professions"
+  add_foreign_key "person_skills", "people"
+  add_foreign_key "person_skills", "skills"
 end
