@@ -36,47 +36,53 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                 <li class="nav-devider"></li>
-                <li class="nav-small-cap">PERSONA</li>
+                 <li class="nav-small-cap">
+                        DASHBOARD
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><%= link_to "Dashboard", skills_path %></li>
+                        </ul>
+                      </li>
+                 </li>
 
-                              <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Habilidad <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                <li class="nav-small-cap">ACCIONES<li>
+
+                              <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Usuarios</span></a>
                                   <ul aria-expanded="false" class="collapse">
-                                      <li><%= link_to "Lista de Habilidades", skills_path %></li>
-                                      <li><%= link_to "Gestionar Habilidad", civil_states_path %></li>
+                                      <li><%= link_to "Lista de Usuarios", people_path %></li>
+                                      <li><%= link_to "Tipo de Memorandum", memorandum_types_path %></li>
+                                      <li><%= link_to "Lista de Memorandum", memorandums_path %></li>
                                   </ul>
                               </li>
-                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Estado Civil <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-arrange-bring-to-front"></i><span class="hide-menu">Roles Y Permisos</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><%= link_to "Lista de Estados Civiles", civil_states_path %></li>
-                                        <li><%= link_to "Gestionar Estado Civil", civil_states_path %></li>
+                                        <li><%= link_to "Roles", roles_path %></li>
                                     </ul>
                                 </li>
-                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Grado Academico <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-plus"></i><span class="hide-menu">Prestamo de Materiales</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><%= link_to "Lista de Grados Academicos", skills_path %></li>
-                                        <li><%= link_to "Gestionar Grado Academico", civil_states_path %></li>
+                                        <li><%= link_to "Stock Categoria", skills_path %></li>
+                                        <li><%= link_to "Stock", civil_states_path %></li>
+                                        <li><%= link_to "Asignacion de Stock", civil_states_path %></li>
+                                        <li><%= link_to "Asignacion detalle", civil_states_path %></li>
                                     </ul>
                                 </li>
 
-                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Profesion <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><%= link_to "Lista de Profesiones", skills_path %></li>
-                                        <li><%= link_to "Gestionar Profesion", civil_states_path %></li>
-                                    </ul>
-                                </li>
-                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">PERSONA <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Persona</span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><%= link_to "Habilidades", skills_path %></li>
                                         <li><%= link_to "Estados Civiles", civil_states_path %></li>
-                                        <li><%= link_to "Grado Academicos", civil_states_path %></li>
-                                        <li><%= link_to "Profesiones", civil_states_path %></li>
-                                        <li><%= link_to "Administrar Perfil", civil_states_path %></li>
+                                        <li><%= link_to "Grado Academicos", grade_academics_path %></li>
+                                        <li><%= link_to "Profesiones", person_professions_path %></li>
+                                        <li><%= link_to "Administrar Perfil", people_path %></li>
+                                        <li><%= link_to "Lista de Profesiones", professions_path %></li>
+
                                     </ul>
                                 </li>
 
                       <li class="nav-small-cap">CONTRATO</li>
 
-                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Contrato <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Contrato </span></a>
                           <ul aria-expanded="false" class="collapse">
                               <li><%= link_to "Gestionar Contrato", skills_path %></li>
                               <li><%= link_to "Listar Contratos", contract_types_path %></li>
@@ -87,21 +93,18 @@
                       </li>
 
                         <li class="nav-small-cap">Pago</li>
-                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Pago <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Pago </span></a>
                           <ul aria-expanded="false" class="collapse">
-                              <li><%= link_to "Gestionar Pago", civil_states_path %></li>
-                              <li><%= link_to "Gestionar Beneficio Para Pago", civil_states_path %></li>
-                              <li><%= link_to "Gestionar Descuento Para Pago", civil_states_path %></li>
-                              <li><%= link_to "Gestionar Tipo De Pago", contract_types_path %></li>
-                              <li><%= link_to "generar planilla de pago", civil_states_path %></li>
+                              <li><%= link_to "Gestionar Pago", pay_types_path  %></li>
+                              <li><%= link_to "Tipo de pago",pay_types_path %></li>
+
                           </ul>
                       </li>
 
                         <li class="nav-small-cap">Control</li>
-                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">control <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Control </span></a>
                           <ul aria-expanded="false" class="collapse">
-                              <li><%= link_to "registrar asistencia", civil_states_path %></li>
-                              <li><%= link_to "Calcular Horas Extras", civil_states_path %></li>
+                              <li><%= link_to "registrar asistencia", assistances_path %></li>
                               <li><%= link_to "Gestionar Vacaciones", civil_states_path %></li>
                               <li><%= link_to "Registrar Renuncia", civil_states_path %></li>
                               <li><%= link_to "registrar Despidos", civil_states_path %></li>
@@ -112,7 +115,7 @@
                 </li>
 
                 <li class="nav-small-cap">Departamentos</li>
-              <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">control <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+              <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">control</span></a>
                   <ul aria-expanded="false" class="collapse">
                       <li><%= link_to "Gestionar Designacion", civil_states_path %></li>
                       <li><%= link_to "gestionar Capacitacion", civil_states_path %></li>
