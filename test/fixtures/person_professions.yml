@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person: one
+  profession: one
+  grade_academic: one
+
+two:
+  person: two
+  profession: two
+  grade_academic: two

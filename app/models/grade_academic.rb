@@ -1,0 +1,2 @@
+class GradeAcademic < ApplicationRecord
+end

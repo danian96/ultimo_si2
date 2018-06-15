@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_220432) do
-
-  create_table "anuncios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "titulo"
-    t.string "estado"
-    t.string "descripcion"
-    t.bigint "departamento_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["departamento_id"], name: "index_anuncios_on_departamento_id"
-  end
+ActiveRecord::Schema.define(version: 2018_06_14_204834) do
 
   create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "day"
@@ -41,64 +31,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_220432) do
 
   create_table "contract_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "convocatories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "titulo"
-    t.string "descripcion"
-    t.date "fecha_ini"
-    t.date "fecha_fin"
-    t.integer "cantidad_vacantes"
-    t.string "estado"
-    t.bigint "detalle_aplicacion_id"
-    t.bigint "designacion_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["designacion_id"], name: "index_convocatories_on_designacion_id"
-    t.index ["detalle_aplicacion_id"], name: "index_convocatories_on_detalle_aplicacion_id"
-  end
-
-  create_table "departamentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "designacions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id"
-    t.bigint "departamento_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["departamento_id"], name: "index_designacions_on_departamento_id"
-    t.index ["user_id"], name: "index_designacions_on_user_id"
-  end
-
-  create_table "detalle_aplicacions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "estado"
-    t.date "fecha"
-    t.bigint "people_id"
-    t.bigint "evaluacion_psicologica_id"
-    t.bigint "evaluacion_tecnica_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["evaluacion_psicologica_id"], name: "index_detalle_aplicacions_on_evaluacion_psicologica_id"
-    t.index ["evaluacion_tecnica_id"], name: "index_detalle_aplicacions_on_evaluacion_tecnica_id"
-    t.index ["people_id"], name: "index_detalle_aplicacions_on_people_id"
-  end
-
-  create_table "evaluacion_psicologicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "observaciones"
-    t.string "recomendaciones"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "evaluacion_tecnicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "observacion"
-    t.string "calificacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -156,6 +88,33 @@ ActiveRecord::Schema.define(version: 2018_06_14_220432) do
     t.integer "role_id"
   end
 
+  create_table "person_professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "person_id"
+    t.bigint "profession_id"
+    t.bigint "grade_academic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grade_academic_id"], name: "index_person_professions_on_grade_academic_id"
+    t.index ["person_id"], name: "index_person_professions_on_person_id"
+    t.index ["profession_id"], name: "index_person_professions_on_profession_id"
+  end
+
+  create_table "person_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "nivel"
+    t.bigint "person_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_person_skills_on_person_id"
+    t.index ["skill_id"], name: "index_person_skills_on_skill_id"
+  end
+
+  create_table "professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -201,4 +160,9 @@ ActiveRecord::Schema.define(version: 2018_06_14_220432) do
   add_foreign_key "memorandums", "users"
   add_foreign_key "people", "civil_states"
   add_foreign_key "people", "users"
+  add_foreign_key "person_professions", "grade_academics"
+  add_foreign_key "person_professions", "people"
+  add_foreign_key "person_professions", "professions"
+  add_foreign_key "person_skills", "people"
+  add_foreign_key "person_skills", "skills"
 end
