@@ -13,18 +13,18 @@
           <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
-              <th>titulo</th>
-              <th>estado</th>
-              <th>descripcion</th>
-              <th>departamento</th>
+              <th>Titulo</th>
+              <th>Estado</th>
+              <th>Descripcion</th>
+              <th>Departamento</th>
             </tr>
             </thead>
             <tfoot>
             <tr>
-              <th>titulo</th>
-              <th>estado</th>
-              <th>descripcion</th>
-              <th>departamento</th>
+              <th>Titulo</th>
+              <th>Estado</th>
+              <th>Descripcion</th>
+              <th>Departamento</th>
             </tr>
             </tfoot>
 
@@ -36,7 +36,7 @@
                 <td><%= anuncio.titulo %></td>
                 <td><%= anuncio.estado %></td>
                 <td><%= anuncio.descripcion %></td>
-                <td><%= anuncio.departamento_id %></td>
+                <td><%= anuncio.departamento.name %></td>
                 <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, anuncio %>
                 <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_anuncio_path(anuncio) %>
                 <%= link_to '<i class="fa fa-trash-o text-danger"></i>'.html_safe, anuncio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -46,7 +46,7 @@
         </table>
         </div>
         <br>
-        <%= link_to 'Nuevo anuncio', new_anuncio_path, class: "btn btn-block btn-info"  %>
+        <%= link_to 'Nuevo Anuncio', new_anuncio_path, class: "btn btn-block btn-info"  %>
       </div>
     </div>
   </div>

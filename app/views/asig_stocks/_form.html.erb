@@ -13,7 +13,7 @@
 
   <div class="col-md-6">
     <div class="form-group row">
-      <%= form.label :fecha_de_asignacion , class:"control-label text-right col-md-3" %>
+      <%= form.label :fecha_de_asignacion,'Fecha de asignacion :' , class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.date_select :asig_date %>
       </div>
@@ -22,7 +22,7 @@
 
   <div class="col-md-6">
     <div class="form-group row">
-      <%= form.label :usuario , class:"control-label text-right col-md-3" %>
+      <%= form.label :usuario , 'Usuario :', class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.collection_select(:user_id, User.all, :id, :email, {hide_label: true},class: "form-control custom-select") %>
       </div>

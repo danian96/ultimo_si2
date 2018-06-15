@@ -13,7 +13,7 @@
   <% end %>
     <div class="col-md-6">
       <div class="form-group row">
-        <%= form.label :cantidad , class:"control-label text-right col-md-3" %>
+        <%= form.label :cantidad, 'Cantidad :' , class:"control-label text-right col-md-3" %>
         <div class="col-md-9">
           <%= form.number_field :quantity,class:"form-control",placeholder:"00" %>
         </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-6">
       <div class="form-group row">
-        <%= form.label :Stock , class:"control-label text-right col-md-3" %>
+        <%= form.label :stock ,'Stock :', class:"control-label text-right col-md-3" %>
         <div class="col-md-9">
           <%= form.collection_select(:stock_id, Stock.all, :id, :item_name, {hide_label: true},class: "form-control custom-select") %>
         </div>
@@ -30,7 +30,7 @@
 
     <div class="col-md-6">
       <div class="form-group row">
-        <%= form.label :Asignacion_Stock , class:"control-label text-right col-md-3" %>
+        <%= form.label :asignacion_stock,"Asignacion de Stock", class:"control-label text-right col-md-3" %>
         <div class="col-md-9">
           <%= form.collection_select(:asig_stock_id, AsigStock.all, :id, :asig_date, {hide_label: true},class: "form-control custom-select") %>
         </div>

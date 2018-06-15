@@ -10,8 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2018_06_14_220432) do
 
-ActiveRecord::Schema.define(version: 2018_06_14_204834) do
+  create_table "anuncios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "titulo"
+    t.string "estado"
+    t.string "descripcion"
+    t.bigint "departamento_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["departamento_id"], name: "index_anuncios_on_departamento_id"
+  end
+
+  create_table "asig_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "stock_id"
+    t.bigint "asig_stock_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asig_stock_id"], name: "index_asig_details_on_asig_stock_id"
+    t.index ["stock_id"], name: "index_asig_details_on_stock_id"
+  end
+
+  create_table "asig_stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "asig_date"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_asig_stocks_on_user_id"
+  end
 
   create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "day"
@@ -32,6 +59,71 @@ ActiveRecord::Schema.define(version: 2018_06_14_204834) do
 
   create_table "contract_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "convocatories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "titulo"
+    t.string "descripcion"
+    t.date "fecha_ini"
+    t.date "fecha_fin"
+    t.integer "cantidad_vacantes"
+    t.string "estado"
+    t.bigint "detalle_aplicacion_id"
+    t.bigint "designacion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["designacion_id"], name: "index_convocatories_on_designacion_id"
+    t.index ["detalle_aplicacion_id"], name: "index_convocatories_on_detalle_aplicacion_id"
+  end
+
+  create_table "departamentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "designacions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.bigint "departamento_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["departamento_id"], name: "index_designacions_on_departamento_id"
+    t.index ["user_id"], name: "index_designacions_on_user_id"
+  end
+
+  create_table "detalle_aplicacions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "estado"
+    t.date "fecha"
+    t.bigint "people_id"
+    t.bigint "evaluacion_psicologica_id"
+    t.bigint "evaluacion_tecnica_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["evaluacion_psicologica_id"], name: "index_detalle_aplicacions_on_evaluacion_psicologica_id"
+    t.index ["evaluacion_tecnica_id"], name: "index_detalle_aplicacions_on_evaluacion_tecnica_id"
+    t.index ["people_id"], name: "index_detalle_aplicacions_on_people_id"
+  end
+
+  create_table "evaluacion_psicologicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "observaciones"
+    t.string "recomendaciones"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "evaluacion_tecnicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "observacion"
+    t.string "calificacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "grade_academics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "institution"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -182,25 +274,29 @@ ActiveRecord::Schema.define(version: 2018_06_14_204834) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
-  add_foreign_key "anuncios", "departamentos"
-  add_foreign_key "assistances", "people", column: "people_id"
-  add_foreign_key "convocatories", "designacions"
-  add_foreign_key "convocatories", "detalle_aplicacions"
-  add_foreign_key "designacions", "departamentos"
-  add_foreign_key "designacions", "users"
-  add_foreign_key "detalle_aplicacions", "evaluacion_psicologicas"
-  add_foreign_key "detalle_aplicacions", "evaluacion_tecnicas"
-  add_foreign_key "detalle_aplicacions", "people", column: "people_id"
-  add_foreign_key "memorandums", "memorandum_types"
-  add_foreign_key "memorandums", "users"
-  add_foreign_key "people", "civil_states"
-  add_foreign_key "people", "users"
-  add_foreign_key "stocks", "stock_categories"
-  add_foreign_key "traning_users", "tranings"
-  add_foreign_key "traning_users", "users"
-  add_foreign_key "person_professions", "grade_academics"
-  add_foreign_key "person_professions", "people"
-  add_foreign_key "person_professions", "professions"
-  add_foreign_key "person_skills", "people"
-  add_foreign_key "person_skills", "skills"
+
+  add_foreign_key "anuncios", "departamentos", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "asig_details", "asig_stocks", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "asig_details", "stocks", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "asig_stocks", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "assistances", "people", column: "people_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "convocatories", "designacions", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "convocatories", "detalle_aplicacions", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "designacions", "departamentos", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "designacions", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "detalle_aplicacions", "evaluacion_psicologicas", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "detalle_aplicacions", "evaluacion_tecnicas", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "detalle_aplicacions", "people", column: "people_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "memorandums", "memorandum_types", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "memorandums", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "people", "civil_states", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "people", "users", on_delete: :cascade
+  add_foreign_key "person_professions", "grade_academics", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "person_professions", "people", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "person_professions", "professions", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "person_skills", "people", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "person_skills", "skills", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "stocks", "stock_categories", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "traning_users", "tranings", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "traning_users", "users", on_update: :cascade, on_delete: :cascade
 end

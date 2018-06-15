@@ -31,7 +31,7 @@
 
   <div class="col-md-6">
        <div class="form-group row">
-            <%= form.label :descripcion, "descripcion :", class:"control-label text-right col-md-3" %>
+            <%= form.label :descripcion, "Descripcion :", class:"control-label text-right col-md-3" %>
             <div class="col-md-9">
               <%= form.text_field :descripcion ,class:"form-control",placeholder:"descripcion" %>
             </div>
@@ -41,14 +41,23 @@
 
   <div class="col-md-6">
     <div class="form-group row">
-      <%= form.label :departamento_id , class:"control-label text-right col-md-3" %>
+      <%= form.label :departamento_id ,"Departamento :", class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.collection_select(:departamento_id, Departamento.all, :id, :name, {hide_label: true},class: "form-control custom-select") %>
       </div>
     </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-9">
+            <%= form.submit "Guardar", class:"btn btn-info" %>
+            <%= link_to 'Atras',anuncios_path , class:"btn btn-info"%>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
