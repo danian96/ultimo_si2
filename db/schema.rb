@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_220432) do
+ActiveRecord::Schema.define(version: 2018_06_15_162705) do
 
   create_table "anuncios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "titulo"
@@ -202,6 +202,14 @@ ActiveRecord::Schema.define(version: 2018_06_14_220432) do
     t.index ["skill_id"], name: "index_person_skills_on_skill_id"
   end
 
+  create_table "personalizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_personalizations_on_user_id"
+  end
+
   create_table "professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -290,12 +298,13 @@ ActiveRecord::Schema.define(version: 2018_06_14_220432) do
   add_foreign_key "memorandums", "memorandum_types", on_update: :cascade, on_delete: :cascade
   add_foreign_key "memorandums", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "people", "civil_states", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "people", "users", on_delete: :cascade
+  add_foreign_key "people", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "person_professions", "grade_academics", on_update: :cascade, on_delete: :cascade
   add_foreign_key "person_professions", "people", on_update: :cascade, on_delete: :cascade
   add_foreign_key "person_professions", "professions", on_update: :cascade, on_delete: :cascade
   add_foreign_key "person_skills", "people", on_update: :cascade, on_delete: :cascade
   add_foreign_key "person_skills", "skills", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "personalizations", "users"
   add_foreign_key "stocks", "stock_categories", on_update: :cascade, on_delete: :cascade
   add_foreign_key "traning_users", "tranings", on_update: :cascade, on_delete: :cascade
   add_foreign_key "traning_users", "users", on_update: :cascade, on_delete: :cascade

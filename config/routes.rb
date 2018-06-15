@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :personalizations
   resources :person_professions
   resources :grade_academics
   resources :person_skills
@@ -44,4 +45,18 @@ Rails.application.routes.draw do
   resources :stock_categories
   resources :traning_users
   resources :tranings
+
+  post "/home/default", :as => :change_style_default
+  post "/home/blue_dark", :as => :change_style_blue_dark
+  post "/home/blue", :as => :change_style_blue
+  post "/home/default_dark", :as => :change_style_default_dark
+  post "/home/green_dark", :as => :change_style_green_dark
+  post "/home/green", :as => :change_style_green
+  post "/home/megna_dark", :as => :change_style_megna_dark
+  post "/home/megna", :as => :change_style_megna
+  post "/home/purple_dark", :as => :change_style_purple_dark
+  post "/home/purple", :as => :change_style_purple
+  post "/home/red_dark", :as => :change_style_red_dark
+  post "/home/red", :as => :change_style_red
+
 end

@@ -4,9 +4,55 @@
     <title>Sistema de Informacion de Recursos Humanos</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Main css styles -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <!-- Main javascript files -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script>
+        WebFont.load({
+          google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700","Asap+Condensed:500"]},
+          active: function() {
+              sessionStorage.fonts = true;
+          }
+        });
+    </script>
+    <% if current_user.present? %>
+      <% if Personalization.find_by_user_id(current_user.id).present? %>
+        <% case Personalization.find_by_user_id(current_user.id).name
+           when "blue_dark" %>
+          <%= stylesheet_link_tag 'colors/blue-dark.css' %>
+        <% when "blue" %>
+          <%= stylesheet_link_tag 'colors/red-dark.css' %>
+        <% when "default_dark" %>
+          <%= stylesheet_link_tag 'colors/default-dark.css' %>
+        <% when "default" %>
+          <%= stylesheet_link_tag 'colors/default.css' %>
+        <% when "green_dark" %>
+          <%= stylesheet_link_tag 'colors/green-dark.css' %>
+        <% when "green" %>
+          <%= stylesheet_link_tag 'colors/green.css' %>
+        <% when "megna_dark" %>
+          <%= stylesheet_link_tag 'colors/megna-dark.css' %>
+        <% when "megna" %>
+          <%= stylesheet_link_tag 'colors/megna.css' %>
+        <% when "purple_dark" %>
+          <%= stylesheet_link_tag 'colors/purple-dark.css' %>
+        <% when "purple" %>
+          <%= stylesheet_link_tag 'colors/purple.css' %>
+        <% when "megna_dark" %>
+          <%= stylesheet_link_tag 'colors/megna-dark.css' %>
+        <% when "red_dark" %>
+          <%= stylesheet_link_tag 'colors/red-dark.css' %>
+        <% when "red" %>
+          <%= stylesheet_link_tag 'colors/red.css' %>
+        <% end %>
+      <% else %>
+        <%= stylesheet_link_tag 'colors/red-dark.css' %>
+      <% end %>
+    <% else %>
+      <%= stylesheet_link_tag 'colors/red-dark.css' %>
+    <% end %>
   </head>
 
   <body class="fix-header card-no-border">

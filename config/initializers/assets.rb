@@ -11,4 +11,15 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-# Rails.application.config.assets.precompile += %w( admin.js admin.css )
+Rails.application.config.assets.precompile += %w( colors/blue-dark.css )
+Rails.application.config.assets.precompile += %w( colors/blue.css )
+Rails.application.config.assets.precompile += %w( colors/default-dark.css )
+Rails.application.config.assets.precompile += %w( colors/default.css )
+Rails.application.config.assets.precompile += %w( colors/green-dark.css )
+Rails.application.config.assets.precompile += %w( colors/green.css )
+Rails.application.config.assets.precompile += %w( colors/megna-dark.css )
+Rails.application.config.assets.precompile += %w( colors/megna.css )
+Rails.application.config.assets.precompile += %w( colors/purple-dark.css )
+Rails.application.config.assets.precompile += %w( colors/purple.css )
+Rails.application.config.assets.precompile += %w( colors/red-dark.css )
+Rails.application.config.assets.precompile += %w( colors/red.css )
