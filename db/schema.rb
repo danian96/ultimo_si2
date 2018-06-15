@@ -10,8 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_220432) do
-
   create_table "anuncios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "titulo"
     t.string "estado"
@@ -120,7 +118,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_220432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
   create_table "grade_academics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "institution"
@@ -275,28 +272,3 @@ ActiveRecord::Schema.define(version: 2018_06_14_220432) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "anuncios", "departamentos", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "asig_details", "asig_stocks", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "asig_details", "stocks", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "asig_stocks", "users", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "assistances", "people", column: "people_id", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "convocatories", "designacions", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "convocatories", "detalle_aplicacions", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "designacions", "departamentos", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "designacions", "users", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "detalle_aplicacions", "evaluacion_psicologicas", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "detalle_aplicacions", "evaluacion_tecnicas", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "detalle_aplicacions", "people", column: "people_id", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "memorandums", "memorandum_types", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "memorandums", "users", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "people", "civil_states", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "people", "users", on_delete: :cascade
-  add_foreign_key "person_professions", "grade_academics", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "person_professions", "people", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "person_professions", "professions", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "person_skills", "people", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "person_skills", "skills", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "stocks", "stock_categories", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "traning_users", "tranings", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "traning_users", "users", on_update: :cascade, on_delete: :cascade
-end

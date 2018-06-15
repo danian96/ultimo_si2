@@ -30,7 +30,6 @@ Rails.application.routes.draw do
       root to: 'home#home', as: :unauthenticated_root
     end
   end
-
   resources :convocatories
   resources :designacions
   resources :anuncios
@@ -44,4 +43,5 @@ Rails.application.routes.draw do
   resources :stock_categories
   resources :traning_users
   resources :tranings
+  resources :favourites
 end

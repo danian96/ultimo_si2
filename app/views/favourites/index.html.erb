@@ -1,9 +1,10 @@
+
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-lg-12">
     <div class="card card-outline-info">
       <div class="card-header">
-        <h4 class="m-b-0 text-white">Listado de Memorandums</h4>
+        <h4 class="m-b-0 text-white">Listado de Favoritos</h4>
       </div>
       <div class="card-body">
         <h4 class="card-title">Exportar Datos</h4>
@@ -12,46 +13,41 @@
           <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
-              <th>Titulo</th>
-              <th>Descripcion</th>
-              <th>Tipo memorandums</th>
-              <th>User</th>
-              <th>Acciones</th>
+              <th>Nombre</th>
+              <th>Accion Link</th>
+              <th>Usuario</th>
+              <th>Designacion</th>
             </tr>
             </thead>
             <tfoot>
             <tr>
-              <th>Titulo</th>
-              <th>Descripcion</th>
-              <th>Tipo memorandums</th>
-              <th>User</th>
-              <th>Acciones</th>
+              <th>Nombre</th>
+              <th>Accion Link</th>
+              <th>Usuario</th>
+              <th>Designacion</th>
             </tr>
             </tfoot>
-
-           </thead>
-
-          <tbody>
-            <% @memorandums.each do |memorandum| %>
+            <tbody>
+            <% @favourites.each do |favourite| %>
               <tr>
-                <td><%= memorandum.title %></td>
-                <td><%= memorandum.description %></td>
-                <td><%= memorandum.memorandum_type_id %></td>
-                <td><%= memorandum.user_id %></td>
-                <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, memorandum %>
-                <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_memorandum_path(memorandum) %>
-                <%= link_to '<i class="fa fa-trash-o text-danger"></i>'.html_safe, memorandum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= favourite.name %></td>
+                <td><%= favourite.actionlink %></td>
+                <td><%= favourite.user %></td>
+                <td><%= link_to 'Show', favourite %>
+                <%= link_to 'Edit', edit_favourite_path(favourite) %>
+                <%= link_to 'Destroy', favourite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
         </div>
         <br>
-        <%= link_to 'Nuevo Memorandum', new_memorandum_path, class: "btn btn-block btn-info"  %>
+        <%= link_to 'Nuevo Favorito', new_favourite_path, class: "btn btn-block btn-info"  %>
       </div>
     </div>
   </div>
 </div>
+
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
