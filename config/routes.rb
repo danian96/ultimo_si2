@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :person_professions
+  resources :grade_academics
+  resources :person_skills
+  resources :professions
   resources :pay_types
   resources :contract_types
   resources :assistances

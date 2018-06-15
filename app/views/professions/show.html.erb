@@ -1,9 +1,7 @@
 
-
-
 <div class="card card-outline-info">
   <div class="card-header">
-    <h4 class="m-b-0 text-white">Asistencia</h4>
+    <h4 class="m-b-0 text-white">Profesión</h4>
   </div>
   <div class="card-body">
     <div class="form-body">
@@ -12,11 +10,11 @@
       <p id="notice"><%= notice %></p>
       <p>
         <strong>Nombre:</strong>
-        <%= @civil_state.name %>
+        <%= @profession.name %>
       </p>
 
-      <%= link_to 'Edit', edit_civil_state_path(@civil_state), class:"btn btn-info"  %> |
-      <%= link_to 'Back', civil_states_path , class:"btn btn-info" %>
+      <%= link_to 'Edit', edit_profession_path(@profession) , class:"btn btn-info" %> |
+      <%= link_to 'Back', professions_path, class:"btn btn-info"  %>
     </div>
   </div>
 </div>
