@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  resources :favourites
+
   resources :person_professions
   resources :grade_academics
   resources :person_skills
@@ -44,5 +43,5 @@ Rails.application.routes.draw do
   resources :stock_categories
   resources :traning_users
   resources :tranings
+  resources :favourites
 end
-

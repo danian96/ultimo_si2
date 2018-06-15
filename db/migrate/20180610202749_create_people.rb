@@ -8,7 +8,7 @@ class CreatePeople < ActiveRecord::Migration[5.2]
       t.integer :ci
       t.text :address
       t.integer :phone
-      t.references :civil_state, foreign_key: true
+      t.references :civil_state, foreign_key: {on_delete: :cascade, on_update: :cascade}
 
       t.timestamps
     end

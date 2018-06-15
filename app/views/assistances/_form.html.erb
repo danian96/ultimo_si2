@@ -2,7 +2,6 @@
   <% if assistance.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(assistances.errors.count, "error") %> prohibited this assistances from being saved:</h2>
-
       <ul>
       <% assistance.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,7 +11,7 @@
   <% end %>
   <div class="col-md-6">
     <div class="form-group row">
-      <%= form.label :day , class:"control-label text-right col-md-3" %>
+      <%= form.label :day ,"Dia :" , class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.text_field :day ,class:"form-control",placeholder:"Nombre" %>
       </div>
@@ -20,7 +19,7 @@
   </div>
   <div class="col-md-6">
     <div class="form-group row">
-      <%= form.label :date_of_assistance , class:"control-label text-right col-md-3" %>
+      <%= form.label :date_of_assistance, "Fecha de Asistencia :" , class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.date_select :date_of_assistance %>
       </div>
@@ -28,7 +27,7 @@
   </div>
   <div class="col-md-6">
     <div class="form-group row">
-      <%= form.label :init_time , class:"control-label text-right col-md-3" %>
+      <%= form.label :init_time ,"Hora de llegada :", class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.time_select :init_time %>
       </div>
@@ -36,7 +35,7 @@
   </div>
   <div class="col-md-6">
     <div class="form-group row">
-      <%= form.label :finish_time , class:"control-label text-right col-md-3" %>
+      <%= form.label :finish_time ,"Hora de Salida :", class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.time_select :finish_time %>
       </div>
@@ -44,7 +43,7 @@
   </div>
   <div class="col-md-6">
     <div class="form-group row">
-      <%= form.label :people_id,"Persona" , class:"control-label text-right col-md-3" %>
+      <%= form.label :people_id,"Persona :" , class:"control-label text-right col-md-3" %>
       <div class="col-md-9">
         <%= form.collection_select(:people_id, Person.all, :id, :name, {hide_label: true},class: "form-control custom-select") %>
       </div>

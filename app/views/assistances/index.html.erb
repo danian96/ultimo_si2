@@ -38,7 +38,7 @@
                   <td><%= assistance.date_of_assistance %></td>
                   <td><%= assistance.init_time %></td>
                   <td><%= assistance.finish_time %></td>
-                  <td><%= assistance.people_id %></td>
+                  <td><%= assistance.people.name %></td>
                   <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, assistance %>
                   <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_assistance_path(assistance) %>
                   <%= link_to '<i class="fa fa-trash-o text-danger"></i>'.html_safe, assistance, method: :delete, data: { confirm: 'Are you sure?' } %></td>

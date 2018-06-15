@@ -7,8 +7,8 @@ class CreateConvocatories < ActiveRecord::Migration[5.2]
       t.date :fecha_fin
       t.integer :cantidad_vacantes
       t.string :estado
-      t.references :detalle_aplicacion, foreign_key: true
-      t.references :designacion, foreign_key: true
+      t.references :detalle_aplicacion, foreign_key: {on_delete: :cascade, on_update: :cascade}
+      t.references :designacion, foreign_key: {on_delete: :cascade, on_update: :cascade}
 
       t.timestamps
     end

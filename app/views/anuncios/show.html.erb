@@ -24,7 +24,7 @@
 
       <p>
         <strong>Departamento:</strong>
-        <%= @anuncio.departamento_id %>
+        <%= @anuncio.departamento.name %>
       </p>
       <p>
         <%= link_to 'Editar', edit_anuncio_path(@anuncio), class:"btn btn-info"  %>
