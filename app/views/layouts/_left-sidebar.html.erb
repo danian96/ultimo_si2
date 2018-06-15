@@ -15,20 +15,12 @@
 
                 <div class="dropdown-menu animated flipInY">
                 <!-- text-->
-                <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                <!-- text-->
-                <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                <!-- text-->
-                <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                <!-- text-->
-                <div class="dropdown-divider"></div>
-                <!-- text-->
-                <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                <!-- text-->
-                <div class="dropdown-divider"></div>
-                <!-- text-->
-                <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
-                <!-- text-->
+                <% if Person.find_by(user_id: current_user.id).present? %>
+                  <%= link_to 'Perfil', edit_person_path(Person.find_by(user_id: current_user.id)) %>
+                  <i class="ti-wallet">
+                <% else %>
+                  <%= link_to 'Perfil', new_person_path %>
+                <% end %>
                 </div>
             </div>
         </div>
@@ -129,6 +121,15 @@
 
                   </ul>
               </li>
+
+              <li class="nav-small-cap">Backup</li>
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Control </span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><%= link_to 'Descargar Archivo de Backup',backup_index_path, :method=> :post , class:"fa fa-cloud-download"%></li>
+                    <li><%= link_to 'Restore Base de Datos',backup_select_file_path, :method=> :get , class:"fa fa-cloud-upload"%></li>
+
+          </ul>
+      </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

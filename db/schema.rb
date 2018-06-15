@@ -1,4 +1,3 @@
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2018_06_15_162705) do
 
-  create_table "anuncios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "anuncios", force: :cascade do |t|
     t.string "titulo"
     t.string "estado"
     t.string "descripcion"
@@ -23,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["departamento_id"], name: "index_anuncios_on_departamento_id"
   end
 
-  create_table "asig_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "asig_details", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "stock_id"
     t.bigint "asig_stock_id"
@@ -33,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["stock_id"], name: "index_asig_details_on_stock_id"
   end
 
-  create_table "asig_stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "asig_stocks", force: :cascade do |t|
     t.date "asig_date"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -41,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["user_id"], name: "index_asig_stocks_on_user_id"
   end
 
-  create_table "assistances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "assistances", force: :cascade do |t|
     t.string "day"
     t.date "date_of_assistance"
     t.time "init_time"
@@ -52,19 +54,19 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["people_id"], name: "index_assistances_on_people_id"
   end
 
-  create_table "civil_states", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "civil_states", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "contract_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "contract_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "convocatories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "convocatories", force: :cascade do |t|
     t.string "titulo"
     t.string "descripcion"
     t.date "fecha_ini"
@@ -79,13 +81,13 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["detalle_aplicacion_id"], name: "index_convocatories_on_detalle_aplicacion_id"
   end
 
-  create_table "departamentos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "departamentos", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "designacions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "designacions", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
     t.bigint "departamento_id"
@@ -95,7 +97,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["user_id"], name: "index_designacions_on_user_id"
   end
 
-  create_table "detalle_aplicacions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "detalle_aplicacions", force: :cascade do |t|
     t.string "estado"
     t.date "fecha"
     t.bigint "people_id"
@@ -108,21 +110,21 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["people_id"], name: "index_detalle_aplicacions_on_people_id"
   end
 
-  create_table "evaluacion_psicologicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "evaluacion_psicologicas", force: :cascade do |t|
     t.string "observaciones"
     t.string "recomendaciones"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "evaluacion_tecnicas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "evaluacion_tecnicas", force: :cascade do |t|
     t.string "observacion"
     t.string "calificacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "favourites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "favourites", force: :cascade do |t|
     t.string "name"
     t.string "actionlink"
     t.bigint "user_id"
@@ -131,20 +133,20 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
-  create_table "grade_academics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "grade_academics", force: :cascade do |t|
     t.string "name"
     t.string "institution"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "memorandum_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "memorandum_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "memorandums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "memorandums", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.bigint "memorandum_type_id"
@@ -155,13 +157,13 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["user_id"], name: "index_memorandums_on_user_id"
   end
 
-  create_table "pay_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "pay_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "name"
     t.string "last_name"
     t.date "birthday"
@@ -177,7 +179,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["user_id"], name: "index_people_on_user_id"
   end
 
-  create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "permissions", force: :cascade do |t|
     t.string "subject_class"
     t.string "action"
     t.string "name"
@@ -186,12 +188,12 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "permissions_roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "permissions_roles", force: :cascade do |t|
     t.integer "permission_id"
     t.integer "role_id"
   end
 
-  create_table "person_professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "person_professions", force: :cascade do |t|
     t.bigint "person_id"
     t.bigint "profession_id"
     t.bigint "grade_academic_id"
@@ -202,7 +204,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["profession_id"], name: "index_person_professions_on_profession_id"
   end
 
-  create_table "person_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "person_skills", force: :cascade do |t|
     t.integer "nivel"
     t.bigint "person_id"
     t.bigint "skill_id"
@@ -212,7 +214,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["skill_id"], name: "index_person_skills_on_skill_id"
   end
 
-  create_table "personalizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "personalizations", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -220,32 +222,32 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["user_id"], name: "index_personalizations_on_user_id"
   end
 
-  create_table "professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "professions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "skills", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "stock_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "stock_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "stocks", force: :cascade do |t|
     t.string "item_name"
     t.integer "quantity"
     t.date "buying_date"
@@ -255,7 +257,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["stock_category_id"], name: "index_stocks_on_stock_category_id"
   end
 
-  create_table "traning_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "traning_users", force: :cascade do |t|
     t.integer "status"
     t.bigint "traning_id"
     t.bigint "user_id"
@@ -265,7 +267,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.index ["user_id"], name: "index_traning_users_on_user_id"
   end
 
-  create_table "tranings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "tranings", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.date "init_date"
@@ -274,7 +276,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_162705) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

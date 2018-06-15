@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get 'prueba/prueba'
     get "/prueba/set_permission", :as => :set_permission
     post "/backup/restore", :as => :backup_restore
+    post 'backup/index', :as => :backup_index
     resources :convocatories
     resources :designacions
     resources :anuncios
