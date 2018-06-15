@@ -1,0 +1,25 @@
+
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Evaluacion Psicologica</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Person Info</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Observaciones:</strong>
+        <%= @evaluacion_psicologica.observaciones %>
+      </p>
+      <p>
+        <strong>Recomendaciones:</strong>
+        <%= @evaluacion_psicologica.recomendaciones %>
+      </p>
+      <p>
+      <%= link_to 'Editar', edit_evaluacion_psicologica_path(@evaluacion_psicologica), class:"btn btn-info"  %>
+      <%= link_to 'Atras', evaluacion_psicologicas_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

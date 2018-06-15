@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :person_professions
   resources :grade_academics
   resources :person_skills
@@ -30,3 +31,10 @@ Rails.application.routes.draw do
     end
   end
 end
+  resources :convocatories
+  resources :designacions
+  resources :anuncios
+  resources :departamentos
+  resources :detalle_aplicacions
+  resources :evaluacion_psicologicas
+  resources :evaluacion_tecnicas

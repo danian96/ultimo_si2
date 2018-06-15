@@ -1,0 +1,2 @@
+class EvaluacionTecnica < ApplicationRecord
+end

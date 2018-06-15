@@ -1,0 +1,41 @@
+
+<div class="card card-outline-info">
+  <div class="card-header">
+    <h4 class="m-b-0 text-white">Detalle de aplicacion</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-body">
+      <h3 class="box-title">Datos</h3>
+      <hr class="m-t-0 m-b-40">
+      <p>
+        <strong>Estado:</strong>
+        <%= @detalle_aplicacion.estado %>
+      </p>
+
+      <p>
+        <strong>Fecha:</strong>
+        <%= @detalle_aplicacion.fecha %>
+      </p>
+
+      <p>
+        <strong>People:</strong>
+        <%= @detalle_aplicacion.people %>
+      </p>
+
+      <p>
+        <strong>Evaluacion psicologica:</strong>
+        <%= @detalle_aplicacion.evaluacion_psicologica %>
+      </p>
+
+      <p>
+        <strong>Evaluacion tecnica:</strong>
+        <%= @detalle_aplicacion.evaluacion_tecnica %>
+      </p>
+
+      <p>
+        <%= link_to 'Editar', edit_detalle_aplicacion_path(@detalle_aplicacion), class:"btn btn-info"  %>
+        <%= link_to 'Atras', detalle_aplicacion_path, class:"btn btn-info"  %>
+      </p>
+    </div>
+  </div>
+</div>

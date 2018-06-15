@@ -35,13 +35,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_204834) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "grade_academics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "institution"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "memorandum_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -154,7 +147,15 @@ ActiveRecord::Schema.define(version: 2018_06_14_204834) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "anuncios", "departamentos"
   add_foreign_key "assistances", "people", column: "people_id"
+  add_foreign_key "convocatories", "designacions"
+  add_foreign_key "convocatories", "detalle_aplicacions"
+  add_foreign_key "designacions", "departamentos"
+  add_foreign_key "designacions", "users"
+  add_foreign_key "detalle_aplicacions", "evaluacion_psicologicas"
+  add_foreign_key "detalle_aplicacions", "evaluacion_tecnicas"
+  add_foreign_key "detalle_aplicacions", "people", column: "people_id"
   add_foreign_key "memorandums", "memorandum_types"
   add_foreign_key "memorandums", "users"
   add_foreign_key "people", "civil_states"
